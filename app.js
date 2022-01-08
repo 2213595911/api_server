@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const userRouter = require('./router/user')
 const userInfoRouter = require('./router/userInfo')
+const articleCateRouter = require('./router/articleCate')
 const joi = require('joi')
 const expressJWT = require('express-jwt')
 const { jwtSecretKey } = require('./config')
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 app.use(expressJWT({ secret: jwtSecretKey, algorithms: ['HS256'] }).unless({ path: [/^\/api\//] }))
 app.use('/api', userRouter)
 app.use('/my', userInfoRouter)
+app.use('/my/article', articleCateRouter)
 app.use((err, req, res, next) => {
 	// 判断是否是属于验证的错误
 	if (err instanceof joi.ValidationError) return res.cc(err)
