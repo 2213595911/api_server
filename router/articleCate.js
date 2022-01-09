@@ -13,6 +13,6 @@ const expressJoi = require('@escook/express-joi')
 router.get('/cates', getArticleCate)
 router.get('/cates/:id', expressJoi(deleteArticleCateSchema), getArticleCateById)
 router.post('/addcates', expressJoi(addArticleCateSchema), addArticleCate)
-router.post('/deletecate/:id', expressJoi(deleteArticleCateSchema), deleteArticleCate)
-router.post('/updatecate', expressJoi(updateArticleCateSchema), updateArticleCate)
+router.delete('/deletecate/:id', expressJoi(deleteArticleCateSchema), deleteArticleCate)
+router.put('/updatecate', expressJoi(updateArticleCateSchema), updateArticleCate)
 module.exports = router
